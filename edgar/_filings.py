@@ -1324,7 +1324,7 @@ class Filing:
         # Return all the exhibits on the filing
         return self.homepage.attachments.exhibits
 
-    @lru_cache(maxsize=4)
+    # @lru_cache(maxsize=4)
     def html(self) -> Optional[str]:
         """Returns the html contents of the primary document if it is html"""
         print(f"Fetching html for {self.accession_no}")
