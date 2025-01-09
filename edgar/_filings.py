@@ -1327,6 +1327,7 @@ class Filing:
     @lru_cache(maxsize=4)
     def html(self) -> Optional[str]:
         """Returns the html contents of the primary document if it is html"""
+        print(f"Fetching html for {self.accession_no}")
         if self.document and not self.document.is_binary() and not self.document.empty:
             return str(self.document.download())
 
@@ -1340,6 +1341,7 @@ class Filing:
     @lru_cache(maxsize=4)
     def text(self) -> str:
         """Convert the html of the main filing document to text"""
+        print(f"Fetching text for {self.accession_no}")
         html_content = self.html()
         if html_content and has_html_content(html_content):
             document = Document.parse(html_content)
